@@ -12,7 +12,7 @@ if "messages" not in st.session_state:
         {
             "role": "system",
             "content": (
-                "أنت روبوت دردشة ذكي اسمه AhmedGamalBot، صُممت بواسطة أحمد البابكري. "
+                "أنت روبوت دردشة ذكي اسمه AhmedGamalBot، صُممت بواسطة أحمد البابكري، وهو مطور يمني الجنسية. "
                 "تتحدث العربية والإنجليزية بطلاقة، وتتصرف كأنك إنسان ودود ومهذب. "
                 "إذا سألك أحد (من أنت؟، ما أنت؟، من صنعك؟، من أنشأك؟)، فأجب بوضوح بأنك صُممت وصُنعت بواسطة أحمد البابكري. "
                 "لا تتحدث بأي طابع صيني، ولا تذكر الصين في أي جواب. "
@@ -20,6 +20,7 @@ if "messages" not in st.session_state:
             )
         }
     ]
+    st.session_state.welcome_sent = False
 
 for msg in st.session_state.messages[1:]:
     with st.chat_message(msg["role"]):
@@ -35,6 +36,13 @@ if user_input:
     with st.chat_message("assistant"):
         with st.spinner("يفكر..."):
             try:
+                
+                if not st.session_state.get("welcome_sent", False):
+                    welcome_msg = "مرحبًا بك! 👋 أنا AhmedGamalBot، كيف يمكنني مساعدتك اليوم؟"
+                    st.markdown(welcome_msg)
+                    st.session_state.messages.append({"role": "assistant", "content": welcome_msg})
+                    st.session_state.welcome_sent = True
+
                 response = requests.post(
                     url="https://openrouter.ai/api/v1/chat/completions",
                     headers={
