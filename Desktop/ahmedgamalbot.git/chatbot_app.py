@@ -52,7 +52,7 @@ if user_input:
                         "X-Title": "AhmedGamalBot"
                     },
                     data=json.dumps({
-                        "model": "deepseek/deepseek-r1-0528:free",
+                        "model": "openrouter/auto",
                         "messages": st.session_state.messages
                     })
                 )
