@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import json
 
-api_key = "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"
+api_key = "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"
 
 st.set_page_config(page_title="AhmedGamalBot", page_icon="🤖", layout="centered")
 st.title("💬 AhmedGamalBot")
