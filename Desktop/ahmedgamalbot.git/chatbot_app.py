@@ -52,7 +52,7 @@ if user_input:
                         "X-Title": "AhmedGamalBot"
                     },
                     data=json.dumps({
-                        "model": "openrouter/auto",
+                        "model": "Deepseek R1 0528 Qwen3 8B",
                         "messages": st.session_state.messages
                     })
                 )
