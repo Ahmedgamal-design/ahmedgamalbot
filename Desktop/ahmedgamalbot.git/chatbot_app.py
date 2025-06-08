@@ -52,7 +52,7 @@ if user_input:
                         "X-Title": "AhmedGamalBot"
                     },
                     data=json.dumps({
-                        "model": "Deepseek R1 0528 Qwen3 8B",
+                        "model": "gpt-3.5-turbo",
                         "messages": st.session_state.messages
                     })
                 )
